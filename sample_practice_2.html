@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KidSmart - Sign In</title>
+  <style>
+    /* Keep the same styles as before or copy from signup */
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffd54f, #f48fb1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fffde7;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 2px solid #f48fb1;
+    }
+
+    button {
+      background: #ffca28;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Sign In</h2>
+  <input type="text" id="signinUser" placeholder="Username" required>
+  <input type="password" id="signinPass" placeholder="Password" required>
+  <button onclick="signIn()">Login 🚀</button>
+  <div class="error" id="signinError">Invalid credentials!</div>
+</div>
+
+<script>
+  function signIn() {
+    const savedUser = localStorage.getItem("kidUser");
+    const savedPass = localStorage.getItem("kidPass");
+
+    const user = document.getElementById("signinUser").value;
+    const pass = document.getElementById("signinPass").value;
+
+    if (user === savedUser && pass === savedPass) {
+      // Success
+      window.location.href = "welcome.html";
+    } else {
+      document.getElementById("signinError").style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
